@@ -8,4 +8,6 @@ const order = (props) => (
     <p>Price:</p>
   </div>
 )
+
+
 export default order;
