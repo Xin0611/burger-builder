@@ -94,6 +94,9 @@ class ContactData extends Component {
     loading: false
   }
 
+  formChangeHandler = (event) => {
+
+  }
   orderHandler = (event) => {
     event.preventDefault();
     this.setState({loading: true});
@@ -123,12 +126,23 @@ class ContactData extends Component {
       });
   }
   render () {
+    const formElementsArray = [];
+    for(let key in this.state.orderForm) {
+      formElementsArray.push({
+        id: key,
+        config: this.state.orderForm[key]
+      });
+    }
     let form = (
       <form>
-        <Input inputtype="input" type="text" name="name" placeholder="Your Name" />
-        <Input inputtype="input" type="email" name="email" placeholder="Your Mail" />
-        <Input inputtype="input" type="text" name="street" placeholder="Street" />
-        <Input inputtype="input" type="text" name="postal" placeholder="Postal Code" />
+        {formElementsArray.map(formElement => (
+          <Input 
+            key={formElement.id}
+            elementType={formElement.config.elementType} 
+            elementConfig={formElement.config.elementConfig} 
+            value={formElement.config.value} 
+            onChange={this.formChangeHandler}/>
+        ))}
         <Button 
           btnType="Success"
           clicked={this.orderHandler}>Order</Button>
