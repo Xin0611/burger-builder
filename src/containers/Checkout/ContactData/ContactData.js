@@ -102,6 +102,7 @@ class ContactData extends Component {
       ...updatedOrderForm[inputId]
     }
     updatedFormElement.value = event.target.value;
+    updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation)
     updatedOrderForm[inputId] = updatedFormElement;
     this.setState({orderForm: updatedOrderForm});
   }
@@ -128,6 +129,20 @@ class ContactData extends Component {
         //console.log(error);
         this.setState({loading: false});
       });
+  }
+
+  checkValidity(value, rules) {
+    let isValid = false;
+    if (rules.required) {
+      isValid = value.trim() !== '';
+    }
+    if (rules.minLength) {
+      isValid = value.length >= rules.minLength;
+    }
+    if (rules.maxLength) {
+      isValid = value.length <= rules.maxLength;
+    }
+    return isValid;
   }
   render () {
     const formElementsArray = [];
