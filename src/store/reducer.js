@@ -12,7 +12,7 @@ const initialState = {
 
 
 const reducer = (state = initialState, action) => {
-  switch (action.Type) {
+  switch (action.type) {
     case actionTypes.ADD_INGREDIENT:
       return {
         ...state,
