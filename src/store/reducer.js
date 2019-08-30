@@ -7,7 +7,8 @@ const initialState = {
     cheese: 0,
     meat: 0
   },
-  totalPrice: 4
+  totalPrice: 4,
+  purchasable: false
 }
 const INGREDIENTS_PRICES = {
   salad: 0.5,
