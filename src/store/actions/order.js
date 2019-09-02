@@ -1,7 +1,8 @@
 import {
   PURCHASE_BURGER_SUCCESS,
   PURCHASE_BURGER_FAIL,
-  PURCHASE_BURGER_START
+  PURCHASE_BURGER_START,
+  PURCHASE_INIT
 } from './actionTypes';
 
 import axios from '../../axios-orders';
@@ -26,7 +27,10 @@ export const purchaseBurger = (orderData) => {
   return dispatch => {
     dispatch(purchaseBurgerStart());
     axios.post('./orders.json', orderData)
-      .then( response => {dispatch(purchaseBurgerSuccess(response.data.name, orderData))})
+      .then( response => {
+        dispatch(purchaseBurgerSuccess(response.data.name, orderData));
+        dispatch(purchaseInit());
+      })
       .catch( error => {dispatch(purchaseBurgerFail(error))})
   }
 }
@@ -34,5 +38,11 @@ export const purchaseBurger = (orderData) => {
 export const purchaseBurgerStart = () => {
   return {
     type: PURCHASE_BURGER_START
+  }
+}
+
+export const purchaseInit = () => {
+  return {
+    type: PURCHASE_INIT
   }
 }
