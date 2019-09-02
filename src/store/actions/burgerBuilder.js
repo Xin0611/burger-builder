@@ -3,7 +3,7 @@ import {
   ADD_INGREDIENT, 
   REMOVE_INGREDIENT,
   SET_INGREDIENTS,
-  FETCH_INGREDIENTS_FAILED
+  FETCH_INGREDIENTS_FAIL
 } from  './actionTypes';
 
 
@@ -30,7 +30,7 @@ export const setIngredients = (ingredients) => {
 
 export const fetchIngredientsFailed = () => {
   return {
-    type: FETCH_INGREDIENTS_FAILED
+    type: FETCH_INGREDIENTS_FAIL
   }
 };
 
