@@ -156,7 +156,7 @@ class ContactData extends Component {
       <form onSubmit={this.orderHandler}>
         {formElementsArray.map(formElement => (
           <Input 
-            key={formElement.id}å
+            key={formElement.id}
             elementType={formElement.config.elementType} 
             elementConfig={formElement.config.elementConfig} 
             value={formElement.config.value} 
