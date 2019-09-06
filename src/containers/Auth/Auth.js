@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import Input from '../../components/UI/Input/input';
 import Button from '../../components/UI/Button/Button';
 
+import classes from './Auth.module.css';
+
 class Auth extends Component {
   state = {
     controls: {
@@ -45,7 +47,7 @@ class Auth extends Component {
       });
     }
     return (
-      <div>
+      <div className={classes.Auth}>
         <form>
         {formElementsArray.map(formElement => (
           <Input 
